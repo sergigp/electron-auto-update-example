@@ -10,8 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-builder build --mac --win --linux --publish never",
-    "deploy": "electron-builder build --mac --win --linux --publish always"
+    "build": "electron-builder build --linux --publish never",
+    "deploy": "electron-builder build --linux --publish always"
   },
   "author": "",
   "license": "ISC",
