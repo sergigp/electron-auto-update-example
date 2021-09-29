@@ -20,6 +20,7 @@
     "electron-builder": "^20.40.2"
   },
   "dependencies": {
+    "electron-log": "^4.4.1",
     "electron-updater": "^4.0.6"
   }
 }
