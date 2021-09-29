@@ -1,5 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
+const log = require('electron-log');
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
 
 let mainWindow;
 
@@ -16,7 +21,7 @@ function createWindow () {
     mainWindow = null;
   });
   mainWindow.once('ready-to-show', () => {
-    console.log('ready-to-show')
+    log.info('ready-to-show')
     autoUpdater.checkForUpdatesAndNotify();
   });
 }
@@ -42,12 +47,12 @@ ipcMain.on('app_version', (event) => {
 });
 
 autoUpdater.on('update-available', () => {
-  console.log('update-available')
+  log.info('update-available')
   mainWindow.webContents.send('update_available');
 });
 
 autoUpdater.on('update-downloaded', () => {
-  console.log('update-downloaded')
+  log.info('update-downloaded')
   mainWindow.webContents.send('update_downloaded');
 });
 
