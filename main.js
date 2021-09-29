@@ -16,6 +16,7 @@ function createWindow () {
     mainWindow = null;
   });
   mainWindow.once('ready-to-show', () => {
+    console.log('ready-to-show')
     autoUpdater.checkForUpdatesAndNotify();
   });
 }
@@ -41,10 +42,12 @@ ipcMain.on('app_version', (event) => {
 });
 
 autoUpdater.on('update-available', () => {
+  console.log('update-available')
   mainWindow.webContents.send('update_available');
 });
 
 autoUpdater.on('update-downloaded', () => {
+  console.log('update-downloaded')
   mainWindow.webContents.send('update_downloaded');
 });
 
