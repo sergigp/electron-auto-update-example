@@ -27,6 +27,8 @@ function createWindow () {
 }
 
 app.on('ready', () => {
+  log.info('app ready');
+  autoUpdater.checkForUpdates();
   createWindow();
 });
 
@@ -49,6 +51,14 @@ ipcMain.on('app_version', (event) => {
 autoUpdater.on('update-available', () => {
   log.info('update-available')
   mainWindow.webContents.send('update_available');
+});
+
+autoUpdater.on('checking-for-update', () => {
+  log.info('checking-for-update')
+});
+
+autoUpdater.on('update-not-available', () => {
+  log.info('update-not-available')
 });
 
 autoUpdater.on('update-downloaded', () => {
